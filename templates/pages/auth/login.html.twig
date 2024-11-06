@@ -1,0 +1,57 @@
+{% extends 'pages/base.html.twig' %}
+
+{% block title %}
+	My Portfolio - Home
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+{% endblock %}
+
+{% block body%}
+	<h1>Connectez-vous</h1>
+	<section class="flex justify-center p-5">
+
+		<div class="flex flex-col">
+			{{ form_start(form) }}
+			<div class="mb-4">
+				<div class="mb-2 text-xl">
+					{{ form_label(form.email) }}
+				</div>
+				<div class="border-2 border-gray-700 p-2 rounded-xl">
+					{{ form_widget(form.email, {'full_name':'email'}) }}
+				</div>
+			</div>
+
+			<div class="mb-4">
+				<div class="mb-2 text-xl">
+					{{ form_label(form.password) }}
+				</div>
+				<div class="border-2 border-gray-700 p-2 rounded-xl">
+					{{ form_widget(form.password, {'full_name': 'password'}) }}
+				</div>
+			</div>
+
+			<div class="border-2 border-gray-700 p-2 rounded-xl text-center">
+				{{ form_widget(form.submit) }}
+			</div>
+			<div>
+				{{ form_errors(form.email) }}
+				{{ form_errors(form.password) }}
+			</div>
+
+			{{ form_end(form) }}
+		</div>
+
+		{% if message is defined %}
+
+			{{ message }}
+
+		{% endif %}
+
+		{% if error %}
+			<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+		{% endif %}
+	</section>
+
+{% endblock %}

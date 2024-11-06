@@ -1,0 +1,22 @@
+<nav class="bg-gray-800 p-4">
+    <ul class="flex items-center justify-center space-x-6">
+        <li>
+            <a href="/" class="text-white hover:underline font-bold no-underline">Accueil</a>
+        </li>
+        {% if is_granted('ROLE_USER') %}
+            <li>
+                <a href="/profile" class="text-white hover:underline font-bold no-underline">Mon profil</a>
+            </li>
+            <li>
+                <a href="/logout" class="text-white hover:underline font-bold no-underline">Déconnexion</a>
+            </li>
+        {% else %}
+            <li>
+                <a href="/auth" class="text-white hover:underline font-bold no-underline">S'inscrire</a>
+            </li>
+            <li>
+                <a href="/login" class="text-white hover:underline font-bold no-underline">Se connecter</a>
+            </li>
+        {% endif %}
+    </ul>
+</nav>
