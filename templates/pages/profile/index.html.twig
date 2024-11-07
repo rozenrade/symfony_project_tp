@@ -9,12 +9,51 @@
 {% endblock %}
 
 {% block body%}
-	<h1>Bienvenue sur votre dashboard {{ app.user.pseudo }}</h1>
+	<h1 class="flex item-center justify-center mb-16">Bienvenue, {{ app.user.pseudo }}!</h1>
 
-<section class="">
-	<p>Changer vos informations personnelles :</p>
-	
-</section>
+	<section class="flex flex-col justify-center items-center ">
+		<div>
+			<h2 class="flex item-center justify-center mb-16">Voici vos informations personnelles :</h2>
 
+			<div class="shadow-lg rounded-xl p-4">
+				{% if app.user.avatar is not empty %}
+					<p>Voici votre image de profil :</p>
+					<img src="{{ asset('uploads/avatars/' ~ app.user.avatar) }}" alt="Image de profil" class="img-fluid rounded-circle border-2 mb-8 border-black" width="150">
+				{% else %}
+					<img src="{{ asset('assets/img/null.png')}} " class="img-fluid rounded-circle border-2 mb-8 border-black" alt="Image de profil">
+				{% endif %}
+				<div class="border-t-neutral-950 border-2 p-8">
+					<p>Email :</p>
+					<p>{{ app.user.email }}
+					</p>
 
+					<p>Emploi :</p>
+					{% if app.user.emploi is not empty %}
+						<p>{{ app.user.emploi }}</p>
+						<a href="/profile/edit">Cliquez ici pour modifier votre emploi</a>
+					{% else %}
+						<a href="/profile/edit">Cliquez ici pour ajouter un emploi</a>
+					{% endif %}
+
+					<p>Téléphone :</p>
+					{% if app.user.telephone is not empty %}
+						<p>{{ app.user.telephone }}</p>
+						<a href="/profile/edit">Cliquez ici pour modifier votre numéro de téléphone</a>
+					{% else %}
+						<a href="/profile/edit">Cliquez ici pour ajouter un numéro de téléphone</a>
+					{% endif %}
+
+					<p>Description :</p>
+					{% if app.user.description is not empty %}
+						<p>{{ app.user.description }}</p>
+						<a href="/profile/edit">Cliquez ici pour modifier votre description</a>
+					{% else %}
+						<a href="/profile/edit">Cliquez ici pour ajouter une description</a>
+					{% endif %}
+				</div>
+
+			</div>
+		</div>
+
+	</section>
 {% endblock %}

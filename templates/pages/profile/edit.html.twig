@@ -1,0 +1,64 @@
+{% extends 'pages/base.html.twig' %}
+
+{% block title %}
+	My Portfolio - Home
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+{% endblock %}
+
+{% block body%}
+
+	<div class="flex items-center justify-center flex-col p-8">
+		<h1 class="p-4">Modifiez vos paramètres utilisateurs</h1>
+		<div class="w-full max-w-lg">
+			<div class="space-y-4">
+				{{ form_start(form, {attr: {class: 'p-16 bg-white-100 shadow-lg rounded-xl bg-white'}}) }}
+				<div>
+					<div class="text-[24px] p-4">
+						{{ form_widget(form.avatar) }}
+					</div>
+					<div>
+						{{ form_errors(form.avatar) }}
+					</div>
+				</div>
+
+				<div>
+					<div class="text-[24px] p-4 border-gray-900 border-2 m-2">
+						{{ form_widget(form.pseudo) }}
+					</div>
+					<div>
+						{{ form_errors(form.pseudo) }}
+					</div>
+				</div>
+
+				<div>
+					<div class="text-[24px] p-4 border-gray-900 border-2 m-2">
+						{{ form_widget(form.emploi) }}
+					</div>
+					<div>
+						{{ form_errors(form.emploi) }}
+					</div>
+				</div>
+
+				<div>
+					<div class="text-[24px] p-4 border-gray-900 border-2 m-2">
+						{{ form_widget(form.description) }}
+					</div>
+					<div>
+						{{ form_errors(form.description) }}
+					</div>
+				</div>
+
+				<div class="text-[24px] p-4">
+					{{ form_widget(form.submit) }}
+				</div>
+			</div>
+
+			{{ form_end(form) }}
+		</div>
+	</div>
+
+
+{% endblock %}
