@@ -11,10 +11,14 @@
 {% block body%}
 	<h1>Bienvenue sur l'accueil de mon Portfolio !</h1>
 
-{% if success is defined %}
+	{% if success is defined %}
+		<div class="bg-green-400 p-10 opacity-50">
+			<p>
+				{{ success }}
+			</p>
+		</div>
 
-{{ success }}
+	{% endif %}
 
-{% endif %}
 
 {% endblock %}

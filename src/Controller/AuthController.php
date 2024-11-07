@@ -47,7 +47,7 @@ class AuthController extends AbstractController
     }
 
     #[Route('/login', name: 'app_login')]
-    public function login(UserRepository $repository, Request $req, AuthenticationUtils $authenticationUtils): Response
+    public function login(AuthenticationUtils $authenticationUtils): Response
     {
         
         if($this->isGranted('IS_AUTHENTICATED_FULLY')){

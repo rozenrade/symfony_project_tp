@@ -12,50 +12,55 @@
 	<h1>Veuillez utiliser le formulaire ci-dessous pour vous créer un compte</h1>
 
 	<section class="flex justify-center p-5">
+		<div class="shadow-xl p-16">
+			<div class="flex flex-col">
+				{{ form_start(form) }}
+				<div class="mb-4">
+					<div class="mb-2 text-xl">
+						{{ form_label(form.email) }}
+					</div>
+					{{ form_widget(form.email, {attr: {class: 'p-2 outline-0 text-[2rem]'}}) }}
+					{{ form_errors(form.email) }}
 
-		<div class="flex flex-col">
-			{{ form_start(form) }}
-			<div class="mb-4">
-				<div class="mb-2 text-xl">
-					{{ form_label(form.email) }}
 				</div>
-				<div class="border-2 border-gray-700 p-2 rounded-xl">
-					{{ form_widget(form.email, {'full_name':'email'}) }}
+				<div class="mb-4">
+					<div class="mb-2 text-xl">
+						{{ form_label(form.pseudo) }}
+					</div>
+					{{ form_widget(form.pseudo, {attr: {class: 'p-2 outline-0 text-[2rem]'}}) }}
+					{{ form_errors(form.pseudo) }}
 				</div>
-			</div>
-			<div class="mb-4">
-				<div class="mb-2 text-xl">
-					{{ form_label(form.pseudo) }}
+
+				<div class="mb-4">
+					<div class="flex flex-col">
+
+						<div class="mb-2 text-xl">
+							{{ form_label(form.password.first) }}
+						</div>
+						{{ form_widget(form.password.first, {attr: {class: 'p-2 outline-0 text-[2rem]'}}) }}
+
+						<div class="mb-2 text-xl">
+							{{ form_label(form.password.second) }}
+						</div>
+						{{ form_widget(form.password.second, {attr: {class: 'p-2 outline-0 text-[2rem]'}}) }}
+
+						{{ form_errors(form.password) }}
+					</div>
 				</div>
-				<div class="border-2 border-gray-700 p-2 rounded-xl">
-					{{ form_widget(form.pseudo, {'full_name':'email'}) }}
+
+				<div class="border-2 border-gray-700 p-2 rounded-xl text-center">
+					{{ form_widget(form.submit) }}
 				</div>
+				<div></div>
+
+				{{ form_end(form) }}
 			</div>
 
-			<div class="mb-4">
-				<div class="mb-2 text-xl">
-					{{ form_label(form.password) }}
-				</div>
-				<div class="border-2 border-gray-700 p-2 rounded-xl">
-					{{ form_widget(form.password, {'full_name': 'password'}) }}
-				</div>
-			</div>
+			{% if message is defined %}
 
-			<div class="border-2 border-gray-700 p-2 rounded-xl text-center">
-				{{ form_widget(form.submit) }}
-			</div>
-			<div>
-				{{ form_errors(form.email) }}
-				{{ form_errors(form.password) }}
-			</div>
+				{{ message }}
 
-			{{ form_end(form) }}
+			{% endif %}
 		</div>
-
-		{% if message is defined %}
-
-			{{ message }}
-
-		{% endif %}
 	</section>
 {% endblock %}
